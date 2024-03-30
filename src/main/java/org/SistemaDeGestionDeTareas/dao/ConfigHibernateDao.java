@@ -58,9 +58,9 @@ public class ConfigHibernateDao {
     			System.out.println("Tareas: ");
     			for(int i=0; i<usuario.getListaTareas().size();i++) {
     				System.out.println((i+1) + ")");
-    				System.out.println(usuario.getListaTareas().get(i).getName());
-    				System.out.println(usuario.getListaTareas().get(i).getDescripcion());
-    				System.out.println(usuario.getListaTareas().get(i).getEstado());
+    				System.out.println("Nombre: " + usuario.getListaTareas().get(i).getName());
+    				System.out.println("Descripcion: " + usuario.getListaTareas().get(i).getDescripcion());
+    				System.out.println("Estado: " + usuario.getListaTareas().get(i).getEstado());
     			}
     			System.out.println();
     		}
@@ -71,6 +71,25 @@ public class ConfigHibernateDao {
     		session.close();
     	}
     }
+    
+    public void leerUsuario(Long id) {
+        Session session = abrirSesion();
+        session.beginTransaction();
+		try {	
+			Usuario usuario = (Usuario) session.get(Usuario.class, id);
+			System.out.println("Username: " + usuario.getUsername());
+			System.out.println("Email: " + usuario.getEmail());
+			System.out.println("Password: " + usuario.getPassword());
+			
+			session.getTransaction().commit();
+		}catch (Exception e) {
+    		session.getTransaction().rollback();
+            System.err.println("Error al leer la entidad: " + e.getMessage());
+    	}finally {
+    		session.close();
+    	}
+		
+	}
     
 	public void deleteUsuario(Long id) {
         Session session = abrirSesion();

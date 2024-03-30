@@ -87,6 +87,11 @@ public class App
     	//Volvemos a leer todos los usuarios y sus tareas con sus respectivos cambios
     	service.leerEntidadUsuario();
     	
+    	System.out.println();
+    	
+    	//Leer un usuario
+    	service.leerUsuario(1L);
+    	
     	//Cerramos la sesion de Hibernate
     	service.cerrarSesion();
     	
