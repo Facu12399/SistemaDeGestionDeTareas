@@ -41,9 +41,7 @@ class AppTest {
     	
     	usuario.getListaTareas().add(tarea1);
     	usuario.getListaTareas().add(tarea2);
-        
-        // Simula la sesión y se llama al metodo save
-        service.guardarEntidad(usuario);
+    	
         
         //Verifica que el valor no sea null en ningun atributo del objeto usuario
         assertNotNull("Se esperaba una cadena de texto en el nombre de usuario", usuario.getUsername());
@@ -54,6 +52,9 @@ class AppTest {
         	assertNotNull("Se esperaba una cadena de texto en la descripcion de la tarea", usuario.getListaTareas().get(i).getDescripcion());
         	assertNotNull("Se esperaba una cadena de texto en el estado de la tarea", usuario.getListaTareas().get(i).getEstado());
         }
+        
+        // Simula la sesión y se llama al metodo save
+        service.guardarEntidad(usuario);
         
     }
 

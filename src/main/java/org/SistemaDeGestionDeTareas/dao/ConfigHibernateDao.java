@@ -136,13 +136,11 @@ public class ConfigHibernateDao {
         session.beginTransaction();
         
 		try {	
-	        //Encontramos al usuario
 			Usuario usuario = (Usuario) session.get(Usuario.class, id_usuario); 
 			usuario.setUsername(nuevo_username);
 			usuario.setEmail(nuevo_email);
 			usuario.setPassword(nuevo_password);
 			
-			//Deberiamos editar el usuario por fuera. Osea podemos usar un set y cambiarle los datos. Ejemplo nombre de usuario.
 			session.update(usuario);
 	        System.out.println("Se ha actualizado el usuario");
 			
@@ -160,13 +158,11 @@ public class ConfigHibernateDao {
         session.beginTransaction();
         
 		try {	
-	        //Encontramos al usuario
 			Tareas tarea = (Tareas) session.get(Tareas.class, id_tarea); 
 			tarea.setName(nuevo_name);
 			tarea.setDescripcion(nueva_descripcion);
 			tarea.setEstado(nuevo_estado);
 			
-			//Deberiamos editar el usuario por fuera. Osea podemos usar un set y cambiarle los datos. Ejemplo nombre de usuario.
 			session.update(tarea);
 	        System.out.println("Se ha actualizado el usuario");
 			
